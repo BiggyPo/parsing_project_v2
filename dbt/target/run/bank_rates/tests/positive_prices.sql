@@ -1,0 +1,14 @@
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      SELECT 
+    trade_date,
+    metal_code,
+    buy_price_rub,
+    sell_price_rub
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+WHERE buy_price_rub <= 0 OR sell_price_rub <= 0
+      
+    ) dbt_internal_test

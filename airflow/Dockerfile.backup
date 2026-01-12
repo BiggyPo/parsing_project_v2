@@ -1,0 +1,24 @@
+FROM apache/airflow:2.7.3
+
+USER root
+
+# Установка системных зависимостей
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    curl \
+    git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+USER airflow
+
+# Установка Python зависимостей для Airflow
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir \
+        apache-airflow-providers-postgres \
+        apache-airflow-providers-http \
+        psycopg2-binary \
+        pandas

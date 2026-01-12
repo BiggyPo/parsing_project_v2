@@ -1,0 +1,13 @@
+bank_rates:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: admin
+      pass: Teftel2017
+      port: 5432
+      dbname: bank_rates
+      schema: public  # Меняем на public, чтобы dbt не добавлял префикс
+      threads: 2
+      connect_timeout: 10

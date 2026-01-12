@@ -1,0 +1,5 @@
+.vscode-server/
+bank_rates_monitoring/airflow/logs/
+__pycache__/
+*.pyc
+.env

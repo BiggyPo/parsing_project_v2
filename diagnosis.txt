@@ -1,0 +1,430 @@
+=== Docker Containers ===
+CONTAINER ID   IMAGE                                     COMMAND                  CREATED        STATUS                    PORTS                                                                        NAMES
+8d5b0d35a783   redash/redash:25.8.0                      "/app/bin/docker-ent…"   12 hours ago   Up 12 hours               0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp                                  redash
+e5028d07572a   bank_rates_monitoring-airflow-scheduler   "/usr/bin/dumb-init …"   15 hours ago   Up 15 hours               8080/tcp                                                                     airflow_scheduler
+4d75b819640f   bank_rates_monitoring-airflow-webserver   "/usr/bin/dumb-init …"   15 hours ago   Up 15 hours               0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp                                  airflow_webserver
+5ab09b039108   redis:7-alpine                            "docker-entrypoint.s…"   17 hours ago   Up 17 hours               6379/tcp                                                                     redis
+acb583a7604c   apache/nifi:1.23.2                        "../scripts/start.sh"    17 hours ago   Up 17 hours               8000/tcp, 8443/tcp, 10000/tcp, 0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp   nifi
+c81237b82a6e   bank_rates_monitoring-dbt                 "sleep infinity"         17 hours ago   Up 17 hours                                                                                            dbt
+fac945d175ca   bank_rates_monitoring-airflow-init        "/usr/bin/dumb-init …"   17 hours ago   Exited (0) 15 hours ago                                                                                airflow_init
+5808dab23121   postgres:15                               "docker-entrypoint.s…"   17 hours ago   Up 17 hours (healthy)     0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp                                  postgres_bank
+
+=== Docker Networks ===
+NETWORK ID     NAME                                DRIVER    SCOPE
+a28bd9b61f3c   bank_rates_monitoring_dwh-network   bridge    local
+3f5ea289bcc9   bridge                              bridge    local
+8733d87c17a1   host                                host      local
+98fc173eb099   none                                null      local
+
+=== Docker Compose Files ===
+File: ./docker-compose.yml
+services:
+  # PostgreSQL - основное хранилище
+  postgres:
+    image: postgres:15
+    container_name: postgres_bank
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_MULTIPLE_DATABASES: "airflow,redash"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - dwh-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # NiFi для сбора данных
+  nifi:
+    image: apache/nifi:1.23.2
+    container_name: nifi
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      NIFI_WEB_HTTP_PORT: 8080
+      NIFI_WEB_HTTP_HOST: 0.0.0.0
+    volumes:
+      - nifi_data:/opt/nifi/nifi-current
+      - ./nifi/templates:/templates
+      - ./scripts:/scripts
+    networks:
+      - dwh-network
+
+  # Airflow - оркестратор
+  airflow-webserver:
+    build: ./airflow
+    container_name: airflow_webserver
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY}
+      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-postgres apache-airflow-providers-http"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/config:/opt/airflow/config
+      - ./scripts:/scripts
+    ports:
+      - "8081:8080"
+    command: webserver
+    networks:
+      - dwh-network
+
+  airflow-scheduler:
+    build: ./airflow
+    container_name: airflow_scheduler
+    restart: unless-stopped
+    depends_on:
+      - airflow-webserver
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000    
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-postgres apache-airflow-providers-http"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/config:/opt/airflow/config
+      - ./scripts:/scripts
+    command: scheduler
+    networks:
+      - dwh-network
+
+  airflow-init:
+    build: ./airflow
+    container_name: airflow_init
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    command: >
+      bash -c "airflow db init &&
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
+      echo 'Airflow initialized!'"
+    networks:
+      - dwh-network
+
+  # dbt для трансформации данных
+  dbt:
+    build: ./dbt
+    container_name: dbt
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    volumes:
+      - ./dbt:/usr/app
+      - ./scripts:/scripts
+    working_dir: /usr/app
+    networks:
+      - dwh-network
+
+  # Redash для визуализации
+  redash:
+    image: redash/redash:25.8.0
+    container_name: redash
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      REDASH_DATABASE_URL: "postgresql://admin:Teftel2017@postgres_bank/redash"
+      REDASH_SECRET_KEY: wTVeWNbNhzVmfbKHe7lC9xQRfH6gmD8q95idP4PbTS6BE8qfp3J3UQ
+      REDASH_COOKIE_SECRET: 7y5KlL6B8VnoFPEPFD0u7tlH1tYAMYYT5TKpVNy-TzAeuEdHVx608w
+      REDASH_REDIS_URL: redis://redis:6379/0
+      REDASH_HOST: 0.0.0.0
+      REDASH_PORT: 5000
+      GUNICORN_TIMEOUT: 120
+    ports:
+      - "5000:5000"
+    networks:
+      - dwh-network
+
+  # Redis для Redash
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - dwh-network
+
+networks:
+  dwh-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  nifi_data:
+  redis_data:File: ./backups/docker-compose.yml
+services:
+  # PostgreSQL - основное хранилище
+  postgres:
+    image: postgres:15
+    container_name: postgres_bank
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_MULTIPLE_DATABASES: "airflow,redash"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - dwh-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # NiFi для сбора данных
+  nifi:
+    image: apache/nifi:1.23.2
+    container_name: nifi
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      NIFI_WEB_HTTP_PORT: 8080
+      NIFI_WEB_HTTP_HOST: 0.0.0.0
+    volumes:
+      - nifi_data:/opt/nifi/nifi-current
+      - ./nifi/templates:/templates
+      - ./scripts:/scripts
+    networks:
+      - dwh-network
+
+  # Airflow - оркестратор
+  airflow-webserver:
+    build: ./airflow
+    container_name: airflow_webserver
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY}
+      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-postgres apache-airflow-providers-http"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/config:/opt/airflow/config
+      - ./scripts:/scripts
+    ports:
+      - "8081:8080"
+    command: webserver
+    networks:
+      - dwh-network
+
+  airflow-scheduler:
+    build: ./airflow
+    container_name: airflow_scheduler
+    restart: unless-stopped
+    depends_on:
+      - airflow-webserver
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000    
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-postgres apache-airflow-providers-http"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/config:/opt/airflow/config
+      - ./scripts:/scripts
+    command: scheduler
+    networks:
+      - dwh-network
+
+  airflow-init:
+    build: ./airflow
+    container_name: airflow_init
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW_UID: 1000 # или ваш UID, если хотите, чтобы файлы создавались от вашего имени
+      AIRFLOW_GID: 1000
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    command: >
+      bash -c "airflow db init &&
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
+      echo 'Airflow initialized!'"
+    networks:
+      - dwh-network
+
+  # dbt для трансформации данных
+  dbt:
+    build: ./dbt
+    container_name: dbt
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    volumes:
+      - ./dbt:/usr/app
+      - ./scripts:/scripts
+    working_dir: /usr/app
+    networks:
+      - dwh-network
+
+  # Redash для визуализации
+  redash:
+    image: redash/redash:25.8.0
+    container_name: redash
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      REDASH_DATABASE_URL: "postgresql://admin:Teftel2017@postgres_bank/redash"
+      REDASH_SECRET_KEY: wTVeWNbNhzVmfbKHe7lC9xQRfH6gmD8q95idP4PbTS6BE8qfp3J3UQ
+      REDASH_COOKIE_SECRET: 7y5KlL6B8VnoFPEPFD0u7tlH1tYAMYYT5TKpVNy-TzAeuEdHVx608w
+      REDASH_REDIS_URL: redis://redis:6379/0
+      REDASH_HOST: 0.0.0.0
+      REDASH_PORT: 5000
+      GUNICORN_TIMEOUT: 120
+    ports:
+      - "5000:5000"
+    networks:
+      - dwh-network
+
+  # Redis для Redash
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - dwh-network
+
+networks:
+  dwh-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  nifi_data:
+  redis_data:
+=== Airflow Logs (last 50 lines) ===
+
+=== DBT Profiles ===
+File: ./dbt/dbt_project.yml
+name: 'bank_rates'
+version: '1.0.0'
+config-version: 2
+
+profile: 'bank_rates'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  bank_rates:
+    # Явно отключаем наследование схемы из профиля
+    +materialized: table
+    
+    staging:
+      +schema: staging        # Схема будет именно "staging", без префиксов
+      +materialized: view
+      +tags: ["staging"]
+      
+    dds:
+      +schema: dds            # Схема будет именно "dds", без префиксов
+      +materialized: table
+      +tags: ["dds"]
+      
+    mart:
+      +schema: mart           # Схема будет именно "mart", без префиксов
+      +materialized: table
+      +tags: ["mart"]
+File: ./dbt/profiles.yml
+bank_rates:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres_bank
+      user: admin
+      pass: Teftel2017
+      port: 5432
+      dbname: bank_rates
+      schema: public  # Меняем на public, чтобы dbt не добавлял префикс
+      threads: 2
+      connect_timeout: 10
+
+=== Project Structure ===
+total 88
+drwxrwxr-x 12 biggypo biggypo  4096 Dec 24 07:11 .
+drwxr-x---  8 biggypo biggypo  4096 Dec 24 06:29 ..
+-rw-rw-r--  1 biggypo biggypo   488 Dec 23 16:19 .env
+-rw-rw-r--  1 biggypo biggypo   626 Dec  8 10:47 README.md
+drwxrwxr-x  6 biggypo biggypo  4096 Dec  8 11:35 airflow
+drwxrwxr-x  4 biggypo biggypo  4096 Dec 23 15:46 backups
+drwxrwxr-x  8 biggypo biggypo  4096 Dec 23 16:48 dbt
+-rwxrwxr-x  1 biggypo biggypo   510 Dec 24 07:11 diagnose.sh
+-rw-rw-r--  1 biggypo biggypo 13904 Dec 24 07:11 diagnosis.txt
+-rw-rw-r--  1 biggypo biggypo  5076 Dec 23 19:15 docker-compose.yml
+drwxrwxr-x  2 biggypo biggypo  4096 Dec 23 17:06 docs
+drwxrwxr-x  3 biggypo biggypo  4096 Dec  8 11:39 nifi
+-rw-rw-r--  1 biggypo biggypo     0 Dec 24 06:24 nifi_errors.txt
+drwxrwxr-x  3 biggypo biggypo  4096 Dec  8 10:01 postgres
+drwxrwxr-x  2 biggypo biggypo  4096 Dec  8 10:01 redash
+drwxrwxr-x  2 biggypo biggypo  4096 Dec 23 17:06 redash_queries
+-rwxrwxr-x  1 biggypo biggypo  2008 Dec 23 14:22 restore_nifi_pipeline.sh
+drwxrwxr-x  2 biggypo biggypo  4096 Dec 23 17:29 scripts
+drwxrwxr-x  2 biggypo biggypo  4096 Dec  8 10:01 templates

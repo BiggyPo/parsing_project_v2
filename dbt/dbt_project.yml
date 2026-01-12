@@ -1,0 +1,36 @@
+name: 'bank_rates'
+version: '1.0.0'
+config-version: 2
+
+profile: 'bank_rates'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  bank_rates:
+    # Явно отключаем наследование схемы из профиля
+    +materialized: table
+    
+    staging:
+      +schema: staging        # Схема будет именно "staging", без префиксов
+      +materialized: view
+      +tags: ["staging"]
+      
+    dds:
+      +schema: dds            # Схема будет именно "dds", без префиксов
+      +materialized: table
+      +tags: ["dds"]
+      
+    mart:
+      +schema: mart           # Схема будет именно "mart", без префиксов
+      +materialized: table
+      +tags: ["mart"]
