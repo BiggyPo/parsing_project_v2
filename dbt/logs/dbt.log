@@ -10621,3 +10621,1326 @@ HAVING COUNT(*) > 1
 [0m09:20:06.952348 [debug] [MainThread]: Command `dbt test` succeeded at 09:20:06.952256 after 0.31 seconds
 [0m09:20:06.952608 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x737a6532d9c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x737a63cd6830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x737a632b7970>]}
 [0m09:20:06.952890 [debug] [MainThread]: Flushing usage events
+[0m14:23:47.061225 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9aef313c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ad826050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ad825fc0>]}
+
+
+============================== 14:23:47.069837 | 436bca20-0452-49c6-9b25-ae23d97f8dc0 ==============================
+[0m14:23:47.069837 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:23:47.070299 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'no_print': 'None', 'fail_fast': 'False', 'printer_width': '80', 'target_path': 'None', 'use_experimental_parser': 'False', 'log_format': 'default', 'profiles_dir': '.', 'introspect': 'True', 'log_path': '/usr/app/logs', 'version_check': 'True', 'static_parser': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'debug': 'False', 'write_json': 'True'}
+[0m14:23:47.316364 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '436bca20-0452-49c6-9b25-ae23d97f8dc0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ad874850>]}
+[0m14:23:47.330471 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '436bca20-0452-49c6-9b25-ae23d97f8dc0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9adb81030>]}
+[0m14:23:47.339632 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:23:47.446472 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:23:47.446920 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:23:47.451848 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '436bca20-0452-49c6-9b25-ae23d97f8dc0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ac98c0d0>]}
+[0m14:23:47.456776 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '436bca20-0452-49c6-9b25-ae23d97f8dc0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ada076a0>]}
+[0m14:23:47.457106 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:23:47.457440 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '436bca20-0452-49c6-9b25-ae23d97f8dc0', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ada07a90>]}
+[0m14:23:47.458624 [info ] [MainThread]: 
+[0m14:23:47.459203 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:23:47.460279 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:23:47.460949 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:23:47.469673 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:23:47.471187 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:23:47.471475 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.471780 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.472028 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:23:47.472269 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:23:47.476448 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:23:47.476775 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:23:47.480916 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.481201 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.481552 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.481850 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.482184 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:23:47.482488 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:23:47.482786 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.483035 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.483305 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:23:47.483593 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:23:47.485645 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:23:47.486249 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.486469 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:23:47.490140 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:23:47.493368 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:23:47.493627 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.493874 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:23:47.494087 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:23:47.494300 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:23:47.495017 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:23:47.495248 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:23:47.495451 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:23:47.495729 [info ] [MainThread]: 
+[0m14:23:47.496052 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.04 seconds (0.04s).
+[0m14:23:47.496422 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:23:47.496898 [debug] [MainThread]: Command `dbt run` failed at 14:23:47.496806 after 0.45 seconds
+[0m14:23:47.497156 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9aef313c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ac9d1480>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73d9ac9d1570>]}
+[0m14:23:47.497473 [debug] [MainThread]: Flushing usage events
+[0m14:25:37.593918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3dfbd4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3c9f1ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3c9f1f60>]}
+
+
+============================== 14:25:37.598230 | 7d571956-f305-44a7-9658-32cd8cbc2031 ==============================
+[0m14:25:37.598230 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:25:37.598684 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'partial_parse': 'True', 'no_print': 'None', 'log_format': 'default', 'printer_width': '80', 'use_colors': 'True', 'use_experimental_parser': 'False', 'warn_error': 'None', 'indirect_selection': 'eager', 'profiles_dir': '.', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'log_cache_events': 'False', 'version_check': 'True', 'debug': 'False', 'write_json': 'True', 'quiet': 'False', 'cache_selected_only': 'False', 'introspect': 'True', 'fail_fast': 'False', 'log_path': '/usr/app/logs', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True'}
+[0m14:25:37.678185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7d571956-f305-44a7-9658-32cd8cbc2031', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3c850850>]}
+[0m14:25:37.691710 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7d571956-f305-44a7-9658-32cd8cbc2031', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3cb710f0>]}
+[0m14:25:37.699337 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:25:37.717539 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:25:37.717816 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:25:37.721927 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '7d571956-f305-44a7-9658-32cd8cbc2031', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3b95c0d0>]}
+[0m14:25:37.726411 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '7d571956-f305-44a7-9658-32cd8cbc2031', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3cbd7700>]}
+[0m14:25:37.726783 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:25:37.727105 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '7d571956-f305-44a7-9658-32cd8cbc2031', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3cbd7af0>]}
+[0m14:25:37.728182 [info ] [MainThread]: 
+[0m14:25:37.728766 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:25:37.729829 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:25:37.735600 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:25:37.738746 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:37.740265 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:37.740577 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.740863 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.741127 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:25:37.741401 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:25:37.745966 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:37.746253 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:37.750085 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.750384 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.750641 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.750912 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.751214 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:37.751534 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:37.751834 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.752088 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.752354 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:37.752652 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:37.754424 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:37.755094 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.755317 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:25:37.758555 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:37.762193 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:37.762442 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.762740 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:37.762962 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:37.763184 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:37.763878 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:25:37.764109 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:25:37.764315 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:25:37.764561 [info ] [MainThread]: 
+[0m14:25:37.764901 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.04 seconds (0.04s).
+[0m14:25:37.765281 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:25:37.765782 [debug] [MainThread]: Command `dbt run` failed at 14:25:37.765689 after 0.18 seconds
+[0m14:25:37.766037 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3dfbd4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3b99d4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x756b3b99d570>]}
+[0m14:25:37.766307 [debug] [MainThread]: Flushing usage events
+[0m14:25:52.111278 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c2cb53c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c151a050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c1519fc0>]}
+
+
+============================== 14:25:52.115811 | 40d56543-1e57-4757-86ce-520613c176ac ==============================
+[0m14:25:52.115811 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:25:52.116263 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'indirect_selection': 'eager', 'printer_width': '80', 'log_cache_events': 'False', 'warn_error': 'None', 'use_colors': 'True', 'cache_selected_only': 'False', 'write_json': 'True', 'partial_parse': 'True', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'no_print': 'None', 'introspect': 'True', 'quiet': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'profiles_dir': '.', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'log_path': '/usr/app/logs'}
+[0m14:25:52.194906 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '40d56543-1e57-4757-86ce-520613c176ac', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c156c850>]}
+[0m14:25:52.208257 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '40d56543-1e57-4757-86ce-520613c176ac', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c1881030>]}
+[0m14:25:52.216007 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:25:52.234671 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:25:52.234951 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:25:52.239164 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '40d56543-1e57-4757-86ce-520613c176ac', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c09840d0>]}
+[0m14:25:52.243741 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '40d56543-1e57-4757-86ce-520613c176ac', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c18ff6a0>]}
+[0m14:25:52.244061 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:25:52.244344 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '40d56543-1e57-4757-86ce-520613c176ac', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c18ffa90>]}
+[0m14:25:52.245438 [info ] [MainThread]: 
+[0m14:25:52.246043 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:25:52.247063 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:25:52.252857 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:25:52.255829 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:52.257206 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:52.257544 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.257831 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.258080 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:25:52.258325 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:25:52.262833 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:52.263107 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:52.266904 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.267195 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.267411 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.267717 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.268006 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:52.268289 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:52.268567 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.268824 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.269079 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:52.269341 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:52.271071 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:25:52.271743 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.271959 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:25:52.275415 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:25:52.278684 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:25:52.278933 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.279186 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:25:52.279400 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:25:52.279661 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:25:52.280333 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:25:52.280568 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:25:52.280778 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:25:52.280998 [info ] [MainThread]: 
+[0m14:25:52.281281 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.04 seconds (0.04s).
+[0m14:25:52.281676 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:25:52.282076 [debug] [MainThread]: Command `dbt run` failed at 14:25:52.281987 after 0.18 seconds
+[0m14:25:52.282325 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c2cb53c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c09c9480>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7de3c09c9570>]}
+[0m14:25:52.282606 [debug] [MainThread]: Flushing usage events
+[0m14:27:41.200248 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f7255270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5cf4400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5cf4370>]}
+
+
+============================== 14:27:41.204582 | 68b50764-8f08-483d-ad78-1c49cf1ae554 ==============================
+[0m14:27:41.204582 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:27:41.204971 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'warn_error': 'None', 'partial_parse': 'True', 'profiles_dir': '.', 'use_colors': 'True', 'introspect': 'True', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'log_path': '/usr/app/logs', 'log_format': 'default', 'write_json': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'fail_fast': 'False', 'version_check': 'True', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'debug': 'False'}
+[0m14:27:41.282397 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '68b50764-8f08-483d-ad78-1c49cf1ae554', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f68a9b40>]}
+[0m14:27:41.296063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '68b50764-8f08-483d-ad78-1c49cf1ae554', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5e76cb0>]}
+[0m14:27:41.303621 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:27:41.321992 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:27:41.322242 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:27:41.326462 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '68b50764-8f08-483d-ad78-1c49cf1ae554', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5cf4850>]}
+[0m14:27:41.330983 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '68b50764-8f08-483d-ad78-1c49cf1ae554', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5f49360>]}
+[0m14:27:41.331302 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:27:41.331602 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '68b50764-8f08-483d-ad78-1c49cf1ae554', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f5f49300>]}
+[0m14:27:41.332680 [info ] [MainThread]: 
+[0m14:27:41.333201 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:27:41.334245 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:27:41.340037 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:27:41.343009 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:41.344417 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:41.344719 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.344980 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.345226 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:27:41.345478 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:27:41.349288 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:41.349602 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:41.354711 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.354999 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.355215 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.355467 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.355788 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:41.356072 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:41.356320 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.356621 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.356885 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:41.357138 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:41.358949 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:41.359578 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.359812 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:27:41.363042 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:41.366238 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:41.366490 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.366796 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:41.367011 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:41.367227 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:41.367905 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:27:41.368124 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:27:41.368318 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:27:41.368548 [info ] [MainThread]: 
+[0m14:27:41.368825 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.04 seconds (0.04s).
+[0m14:27:41.369136 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:27:41.369551 [debug] [MainThread]: Command `dbt run` failed at 14:27:41.369441 after 0.18 seconds
+[0m14:27:41.369814 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f7255270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f4f9d3f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70c5f4f9d4e0>]}
+[0m14:27:41.370071 [debug] [MainThread]: Flushing usage events
+[0m14:27:55.825654 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c144698d4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c1445225ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c1445225f60>]}
+
+
+============================== 14:27:55.829992 | c1da21c6-2b27-4ef6-9688-14c6d2e92239 ==============================
+[0m14:27:55.829992 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:27:55.830383 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'target_path': 'None', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'debug': 'False', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'profiles_dir': '.', 'cache_selected_only': 'False', 'log_path': '/usr/app/logs', 'static_parser': 'True', 'write_json': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'partial_parse': 'True', 'introspect': 'True', 'no_print': 'None', 'use_colors': 'True', 'warn_error': 'None'}
+[0m14:27:55.908120 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c1da21c6-2b27-4ef6-9688-14c6d2e92239', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c1445278850>]}
+[0m14:27:55.922141 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c1da21c6-2b27-4ef6-9688-14c6d2e92239', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c14455810f0>]}
+[0m14:27:55.929866 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:27:55.948036 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:27:55.948278 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:27:55.952407 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c1da21c6-2b27-4ef6-9688-14c6d2e92239', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c144438c0d0>]}
+[0m14:27:55.956941 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c1da21c6-2b27-4ef6-9688-14c6d2e92239', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c1445403700>]}
+[0m14:27:55.957250 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:27:55.957559 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c1da21c6-2b27-4ef6-9688-14c6d2e92239', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c1445403af0>]}
+[0m14:27:55.958707 [info ] [MainThread]: 
+[0m14:27:55.959273 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:27:55.960288 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:27:55.966062 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:27:55.969045 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:55.970375 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:55.970669 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.970937 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.971187 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:27:55.971429 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:27:55.975854 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:55.976125 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:55.979428 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.979749 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.979967 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.980218 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.980502 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:55.980810 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:55.981055 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.981297 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.981603 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:55.981854 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:55.983541 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:27:55.984221 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.984435 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:27:55.987656 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:27:55.990800 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:27:55.991034 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.991277 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:27:55.991486 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:27:55.991762 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:27:55.992396 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:27:55.992637 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:27:55.992836 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:27:55.993054 [info ] [MainThread]: 
+[0m14:27:55.993341 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.03 seconds (0.03s).
+[0m14:27:55.993726 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:27:55.994116 [debug] [MainThread]: Command `dbt run` failed at 14:27:55.994029 after 0.17 seconds
+[0m14:27:55.994373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c144698d4e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c14443d14e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7c14443d1570>]}
+[0m14:27:55.994662 [debug] [MainThread]: Flushing usage events
+[0m14:29:45.663894 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da366d450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da20f5090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da20f5000>]}
+
+
+============================== 14:29:45.668462 | 05f5e0e2-fa02-499b-801c-edcc27ff6eb2 ==============================
+[0m14:29:45.668462 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:29:45.668872 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'debug': 'False', 'cache_selected_only': 'False', 'write_json': 'True', 'log_format': 'default', 'warn_error': 'None', 'partial_parse': 'True', 'fail_fast': 'False', 'log_path': '/usr/app/logs', 'introspect': 'True', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'target_path': 'None', 'static_parser': 'True', 'profiles_dir': '.', 'use_experimental_parser': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'use_colors': 'True', 'version_check': 'True'}
+[0m14:29:45.747456 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '05f5e0e2-fa02-499b-801c-edcc27ff6eb2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da5de7610>]}
+[0m14:29:45.761148 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '05f5e0e2-fa02-499b-801c-edcc27ff6eb2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da226e1d0>]}
+[0m14:29:45.768632 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:29:45.786984 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:29:45.787229 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:29:45.791498 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '05f5e0e2-fa02-499b-801c-edcc27ff6eb2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da135c0d0>]}
+[0m14:29:45.796138 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '05f5e0e2-fa02-499b-801c-edcc27ff6eb2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da22d86a0>]}
+[0m14:29:45.796464 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:29:45.796774 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '05f5e0e2-fa02-499b-801c-edcc27ff6eb2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da22d9900>]}
+[0m14:29:45.797828 [info ] [MainThread]: 
+[0m14:29:45.798370 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:29:45.799404 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:29:45.805171 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:29:45.808095 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:29:45.809620 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:29:45.809899 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.810160 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.810405 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:29:45.810668 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:29:45.814724 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:29:45.814990 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:29:45.818334 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.818645 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.818861 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.819113 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.819398 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:29:45.819701 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:29:45.819976 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.820214 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.820468 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:29:45.820756 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:29:45.822581 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:29:45.823212 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.823421 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:29:45.826554 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[0m14:29:45.829819 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:29:45.830059 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.830308 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m14:29:45.830559 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m14:29:45.830793 [debug] [ThreadPool]: On list_bank_rates: No close available on handle
+[0m14:29:45.831442 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:29:45.831699 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:29:45.831899 [debug] [MainThread]: Connection 'list_bank_rates' was properly closed.
+[0m14:29:45.832142 [info ] [MainThread]: 
+[0m14:29:45.832427 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 0.03 seconds (0.03s).
+[0m14:29:45.832787 [error] [MainThread]: Encountered an error:
+Database Error
+  could not translate host name "postgres" to address: Temporary failure in name resolution
+  
+[0m14:29:45.833185 [debug] [MainThread]: Command `dbt run` failed at 14:29:45.833097 after 0.18 seconds
+[0m14:29:45.833448 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da366d450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da139d4b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9da139d540>]}
+[0m14:29:45.833758 [debug] [MainThread]: Flushing usage events
+[0m14:31:49.232168 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff542e3d750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff5418f56f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff5418f5660>]}
+
+
+============================== 14:31:49.236596 | 37d612e6-1d2e-4ed6-bcff-d774da0a8729 ==============================
+[0m14:31:49.236596 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:31:49.237028 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'quiet': 'False', 'use_colors': 'True', 'log_format': 'default', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'indirect_selection': 'eager', 'introspect': 'True', 'printer_width': '80', 'fail_fast': 'False', 'profiles_dir': '.', 'target_path': 'None', 'version_check': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'log_path': '/usr/app/logs', 'partial_parse': 'True'}
+[0m14:31:49.314904 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff542077cd0>]}
+[0m14:31:49.328195 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff541a6bd60>]}
+[0m14:31:49.336065 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:31:49.354353 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:31:49.354632 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:31:49.358731 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff540b5c0d0>]}
+[0m14:31:49.363229 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff541a52860>]}
+[0m14:31:49.363574 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:31:49.363866 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff541a528c0>]}
+[0m14:31:49.365116 [info ] [MainThread]: 
+[0m14:31:49.365791 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:31:49.366805 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:31:49.372617 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates'
+[0m14:31:49.375267 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:31:49.376696 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:31:49.376974 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:31:49.377248 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:31:49.377536 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:49.377798 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:49.420412 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.0 seconds
+[0m14:31:49.420760 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.0 seconds
+[0m14:31:49.421860 [debug] [ThreadPool]: On list_bank_rates: Close
+[0m14:31:49.422728 [debug] [ThreadPool]: On list_bank_rates: Close
+[0m14:31:49.424684 [debug] [ThreadPool]: Using postgres connection "list_bank_rates"
+[0m14:31:49.425318 [debug] [ThreadPool]: On list_bank_rates: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m14:31:49.425570 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:31:49.431952 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.0 seconds
+[0m14:31:49.432773 [debug] [ThreadPool]: On list_bank_rates: Close
+[0m14:31:49.434082 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_bank_rates, now list_bank_rates_mart)
+[0m14:31:49.434638 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_bank_rates, now list_bank_rates_dds)
+[0m14:31:49.439244 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_mart"
+[0m14:31:49.440476 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_dds"
+[0m14:31:49.440800 [debug] [ThreadPool]: On list_bank_rates_mart: BEGIN
+[0m14:31:49.441055 [debug] [ThreadPool]: On list_bank_rates_dds: BEGIN
+[0m14:31:49.441306 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:31:49.441570 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:31:49.448005 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.448283 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.448501 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_mart"
+[0m14:31:49.448789 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_dds"
+[0m14:31:49.449042 [debug] [ThreadPool]: On list_bank_rates_mart: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_mart"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'mart'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'mart'
+  
+[0m14:31:49.449302 [debug] [ThreadPool]: On list_bank_rates_dds: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_dds"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dds'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dds'
+  
+[0m14:31:49.457266 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.0 seconds
+[0m14:31:49.457516 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:49.458407 [debug] [ThreadPool]: On list_bank_rates_dds: ROLLBACK
+[0m14:31:49.459226 [debug] [ThreadPool]: On list_bank_rates_mart: ROLLBACK
+[0m14:31:49.459604 [debug] [ThreadPool]: On list_bank_rates_dds: Close
+[0m14:31:49.459822 [debug] [ThreadPool]: On list_bank_rates_mart: Close
+[0m14:31:49.460495 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_bank_rates_dds, now list_bank_rates_staging)
+[0m14:31:49.462794 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_staging"
+[0m14:31:49.463023 [debug] [ThreadPool]: On list_bank_rates_staging: BEGIN
+[0m14:31:49.463231 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:31:49.469019 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.469263 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_staging"
+[0m14:31:49.469521 [debug] [ThreadPool]: On list_bank_rates_staging: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_staging"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'staging'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'staging'
+  
+[0m14:31:49.471554 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:49.472335 [debug] [ThreadPool]: On list_bank_rates_staging: ROLLBACK
+[0m14:31:49.472661 [debug] [ThreadPool]: On list_bank_rates_staging: Close
+[0m14:31:49.476079 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.476325 [debug] [MainThread]: On master: BEGIN
+[0m14:31:49.476553 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m14:31:49.482310 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.482565 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.482830 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m14:31:49.491835 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m14:31:49.492712 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff541b484f0>]}
+[0m14:31:49.493039 [debug] [MainThread]: On master: ROLLBACK
+[0m14:31:49.493378 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.493643 [debug] [MainThread]: On master: BEGIN
+[0m14:31:49.494061 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.494276 [debug] [MainThread]: On master: COMMIT
+[0m14:31:49.494486 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.494734 [debug] [MainThread]: On master: COMMIT
+[0m14:31:49.495034 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.495248 [debug] [MainThread]: On master: Close
+[0m14:31:49.495729 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m14:31:49.496048 [info ] [MainThread]: 
+[0m14:31:49.511434 [debug] [Thread-1 (]: Began running node model.bank_rates.stg_cbr_precious_metals
+[0m14:31:49.511870 [info ] [Thread-1 (]: 1 of 4 START sql view model staging.stg_cbr_precious_metals .................... [RUN]
+[0m14:31:49.512373 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_bank_rates_staging, now model.bank_rates.stg_cbr_precious_metals)
+[0m14:31:49.512660 [debug] [Thread-1 (]: Began compiling node model.bank_rates.stg_cbr_precious_metals
+[0m14:31:49.514921 [debug] [Thread-1 (]: Writing injected SQL for node "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.515474 [debug] [Thread-1 (]: Timing info for model.bank_rates.stg_cbr_precious_metals (compile): 14:31:49.512834 => 14:31:49.515299
+[0m14:31:49.515783 [debug] [Thread-1 (]: Began executing node model.bank_rates.stg_cbr_precious_metals
+[0m14:31:49.541877 [debug] [Thread-1 (]: Writing runtime sql for node "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.542415 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.542706 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: BEGIN
+[0m14:31:49.542972 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:31:49.549377 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.549705 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.549995 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.stg_cbr_precious_metals"} */
+
+  create view "bank_rates"."staging"."stg_cbr_precious_metals__dbt_tmp"
+    
+    
+  as (
+    
+
+WITH ranked_data AS (
+    SELECT 
+        id,
+        record_date::DATE as trade_date,
+        metal_code::INTEGER as metal_code,
+        buy_price::DECIMAL(10,2) as buy_price_rub,
+        sell_price::DECIMAL(10,2) as sell_price_rub,
+        from_date::DATE as valid_from,
+        to_date::DATE as valid_to,
+        load_timestamp::TIMESTAMP as loaded_at,
+        -- Выбираем последнюю загрузку для каждого дня и металла
+        ROW_NUMBER() OVER (
+            PARTITION BY record_date, metal_code 
+            ORDER BY load_timestamp DESC
+        ) as rn
+    FROM raw.cbr_precious_metals
+    WHERE record_date IS NOT NULL
+      AND metal_code IS NOT NULL
+      AND buy_price IS NOT NULL
+)
+SELECT 
+    trade_date,
+    metal_code,
+    CASE 
+        WHEN metal_code = 1 THEN 'Золото'
+        WHEN metal_code = 2 THEN 'Серебро'
+        WHEN metal_code = 3 THEN 'Платина'
+        WHEN metal_code = 4 THEN 'Палладий'
+        ELSE 'Неизвестный металл'
+    END as metal_name,
+    buy_price_rub,
+    sell_price_rub,
+    valid_from,
+    valid_to,
+    loaded_at
+FROM ranked_data
+WHERE rn = 1
+  );
+[0m14:31:49.576773 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m14:31:49.581323 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.581661 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.stg_cbr_precious_metals"} */
+alter table "bank_rates"."staging"."stg_cbr_precious_metals" rename to "stg_cbr_precious_metals__dbt_backup"
+[0m14:31:49.582200 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.584990 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.585270 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.stg_cbr_precious_metals"} */
+alter table "bank_rates"."staging"."stg_cbr_precious_metals__dbt_tmp" rename to "stg_cbr_precious_metals"
+[0m14:31:49.585819 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.598297 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: COMMIT
+[0m14:31:49.598620 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.598888 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: COMMIT
+[0m14:31:49.602023 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.605622 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.stg_cbr_precious_metals"
+[0m14:31:49.605910 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.stg_cbr_precious_metals"} */
+drop view if exists "bank_rates"."staging"."stg_cbr_precious_metals__dbt_backup" cascade
+[0m14:31:49.642707 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m14:31:49.643960 [debug] [Thread-1 (]: Timing info for model.bank_rates.stg_cbr_precious_metals (execute): 14:31:49.515951 => 14:31:49.643818
+[0m14:31:49.644229 [debug] [Thread-1 (]: On model.bank_rates.stg_cbr_precious_metals: Close
+[0m14:31:49.644823 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff540743f40>]}
+[0m14:31:49.645293 [info ] [Thread-1 (]: 1 of 4 OK created sql view model staging.stg_cbr_precious_metals ............... [[32mCREATE VIEW[0m in 0.13s]
+[0m14:31:49.645808 [debug] [Thread-1 (]: Finished running node model.bank_rates.stg_cbr_precious_metals
+[0m14:31:49.646650 [debug] [Thread-2 (]: Began running node model.bank_rates.dim_metals
+[0m14:31:49.646962 [debug] [Thread-1 (]: Began running node model.bank_rates.fact_metal_prices
+[0m14:31:49.647280 [info ] [Thread-2 (]: 2 of 4 START sql table model dds.dim_metals .................................... [RUN]
+[0m14:31:49.647823 [info ] [Thread-1 (]: 3 of 4 START sql table model dds.fact_metal_prices ............................. [RUN]
+[0m14:31:49.648392 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_bank_rates_mart, now model.bank_rates.dim_metals)
+[0m14:31:49.648876 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.bank_rates.stg_cbr_precious_metals, now model.bank_rates.fact_metal_prices)
+[0m14:31:49.649193 [debug] [Thread-2 (]: Began compiling node model.bank_rates.dim_metals
+[0m14:31:49.649537 [debug] [Thread-1 (]: Began compiling node model.bank_rates.fact_metal_prices
+[0m14:31:49.651820 [debug] [Thread-2 (]: Writing injected SQL for node "model.bank_rates.dim_metals"
+[0m14:31:49.653871 [debug] [Thread-1 (]: Writing injected SQL for node "model.bank_rates.fact_metal_prices"
+[0m14:31:49.654523 [debug] [Thread-1 (]: Timing info for model.bank_rates.fact_metal_prices (compile): 14:31:49.652050 => 14:31:49.654336
+[0m14:31:49.654878 [debug] [Thread-2 (]: Timing info for model.bank_rates.dim_metals (compile): 14:31:49.649760 => 14:31:49.654713
+[0m14:31:49.655135 [debug] [Thread-1 (]: Began executing node model.bank_rates.fact_metal_prices
+[0m14:31:49.655437 [debug] [Thread-2 (]: Began executing node model.bank_rates.dim_metals
+[0m14:31:49.674881 [debug] [Thread-1 (]: Writing runtime sql for node "model.bank_rates.fact_metal_prices"
+[0m14:31:49.675358 [debug] [Thread-2 (]: Writing runtime sql for node "model.bank_rates.dim_metals"
+[0m14:31:49.675927 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.676216 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.676473 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: BEGIN
+[0m14:31:49.676802 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: BEGIN
+[0m14:31:49.677088 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:31:49.677372 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m14:31:49.684314 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.684604 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.684896 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.685189 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.685501 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.dim_metals"} */
+
+  
+    
+
+  create  table "bank_rates"."dds"."dim_metals__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+SELECT DISTINCT
+    metal_code,
+    metal_name
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+WHERE metal_code IS NOT NULL
+  );
+  
+[0m14:31:49.685845 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.fact_metal_prices"} */
+
+  
+    
+
+  create  table "bank_rates"."dds"."fact_metal_prices__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY trade_date, metal_code) as price_id,
+    trade_date,
+    metal_code,
+    metal_name,
+    buy_price_rub,
+    sell_price_rub,
+    loaded_at,
+    CURRENT_TIMESTAMP as dwh_loaded_at
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+WHERE trade_date IS NOT NULL
+  AND metal_code IS NOT NULL
+  );
+  
+[0m14:31:49.723535 [debug] [Thread-2 (]: SQL status: SELECT 4 in 0.0 seconds
+[0m14:31:49.725931 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.726213 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.dim_metals"} */
+alter table "bank_rates"."dds"."dim_metals" rename to "dim_metals__dbt_backup"
+[0m14:31:49.726744 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.728648 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.728926 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.dim_metals"} */
+alter table "bank_rates"."dds"."dim_metals__dbt_tmp" rename to "dim_metals"
+[0m14:31:49.729376 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.733477 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: COMMIT
+[0m14:31:49.733809 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.734063 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: COMMIT
+[0m14:31:49.736414 [debug] [Thread-1 (]: SQL status: SELECT 16804 in 0.0 seconds
+[0m14:31:49.739305 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.739631 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.fact_metal_prices"} */
+alter table "bank_rates"."dds"."fact_metal_prices" rename to "fact_metal_prices__dbt_backup"
+[0m14:31:49.740127 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.742060 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.742351 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.fact_metal_prices"} */
+alter table "bank_rates"."dds"."fact_metal_prices__dbt_tmp" rename to "fact_metal_prices"
+[0m14:31:49.742842 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.744115 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: COMMIT
+[0m14:31:49.744384 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.744657 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: COMMIT
+[0m14:31:49.758679 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.760381 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.dim_metals"
+[0m14:31:49.760675 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.dim_metals"} */
+drop table if exists "bank_rates"."dds"."dim_metals__dbt_backup" cascade
+[0m14:31:49.766878 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.768535 [debug] [Thread-1 (]: Using postgres connection "model.bank_rates.fact_metal_prices"
+[0m14:31:49.768815 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m14:31:49.769135 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.fact_metal_prices"} */
+drop table if exists "bank_rates"."dds"."fact_metal_prices__dbt_backup" cascade
+[0m14:31:49.770266 [debug] [Thread-2 (]: Timing info for model.bank_rates.dim_metals (execute): 14:31:49.665953 => 14:31:49.770126
+[0m14:31:49.770650 [debug] [Thread-2 (]: On model.bank_rates.dim_metals: Close
+[0m14:31:49.771205 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff540bfe320>]}
+[0m14:31:49.771673 [info ] [Thread-2 (]: 2 of 4 OK created sql table model dds.dim_metals ............................... [[32mSELECT 4[0m in 0.12s]
+[0m14:31:49.772221 [debug] [Thread-2 (]: Finished running node model.bank_rates.dim_metals
+[0m14:31:49.772494 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m14:31:49.773823 [debug] [Thread-1 (]: Timing info for model.bank_rates.fact_metal_prices (execute): 14:31:49.655672 => 14:31:49.773691
+[0m14:31:49.774079 [debug] [Thread-1 (]: On model.bank_rates.fact_metal_prices: Close
+[0m14:31:49.774639 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff54198c730>]}
+[0m14:31:49.775053 [info ] [Thread-1 (]: 3 of 4 OK created sql table model dds.fact_metal_prices ........................ [[32mSELECT 16804[0m in 0.13s]
+[0m14:31:49.775675 [debug] [Thread-1 (]: Finished running node model.bank_rates.fact_metal_prices
+[0m14:31:49.776374 [debug] [Thread-2 (]: Began running node model.bank_rates.metal_prices_analytics
+[0m14:31:49.776737 [info ] [Thread-2 (]: 4 of 4 START sql table model mart.metal_prices_analytics ....................... [RUN]
+[0m14:31:49.777259 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.bank_rates.dim_metals, now model.bank_rates.metal_prices_analytics)
+[0m14:31:49.777565 [debug] [Thread-2 (]: Began compiling node model.bank_rates.metal_prices_analytics
+[0m14:31:49.779786 [debug] [Thread-2 (]: Writing injected SQL for node "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.780310 [debug] [Thread-2 (]: Timing info for model.bank_rates.metal_prices_analytics (compile): 14:31:49.777740 => 14:31:49.780143
+[0m14:31:49.780590 [debug] [Thread-2 (]: Began executing node model.bank_rates.metal_prices_analytics
+[0m14:31:49.783279 [debug] [Thread-2 (]: Writing runtime sql for node "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.783766 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.784032 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: BEGIN
+[0m14:31:49.784298 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m14:31:49.790708 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.790986 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.791267 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.metal_prices_analytics"} */
+
+  
+    
+
+  create  table "bank_rates"."mart"."metal_prices_analytics__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+SELECT 
+    f.trade_date,
+    f.metal_name,
+    f.buy_price_rub,
+    f.sell_price_rub,
+    ROUND((f.buy_price_rub + f.sell_price_rub) / 2, 2) as avg_price_rub,
+    LAG(f.buy_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) as prev_buy_price,
+    LAG(f.sell_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) as prev_sell_price,
+    CASE 
+        WHEN LAG(f.buy_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) IS NOT NULL 
+        THEN ROUND((f.buy_price_rub - LAG(f.buy_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date)) / 
+                   LAG(f.buy_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) * 100, 2)
+        ELSE NULL 
+    END as buy_price_change_percent,
+    CASE 
+        WHEN LAG(f.sell_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) IS NOT NULL 
+        THEN ROUND((f.sell_price_rub - LAG(f.sell_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date)) / 
+                   LAG(f.sell_price_rub) OVER (PARTITION BY f.metal_name ORDER BY f.trade_date) * 100, 2)
+        ELSE NULL 
+    END as sell_price_change_percent
+FROM "bank_rates"."dds"."fact_metal_prices" f
+ORDER BY f.trade_date DESC, f.metal_name
+  );
+  
+[0m14:31:49.840231 [debug] [Thread-2 (]: SQL status: SELECT 16804 in 0.0 seconds
+[0m14:31:49.842685 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.842976 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.metal_prices_analytics"} */
+alter table "bank_rates"."mart"."metal_prices_analytics" rename to "metal_prices_analytics__dbt_backup"
+[0m14:31:49.843482 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.845534 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.845835 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.metal_prices_analytics"} */
+alter table "bank_rates"."mart"."metal_prices_analytics__dbt_tmp" rename to "metal_prices_analytics"
+[0m14:31:49.846314 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m14:31:49.847709 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: COMMIT
+[0m14:31:49.847990 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.848248 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: COMMIT
+[0m14:31:49.863464 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.865229 [debug] [Thread-2 (]: Using postgres connection "model.bank_rates.metal_prices_analytics"
+[0m14:31:49.865566 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "model.bank_rates.metal_prices_analytics"} */
+drop table if exists "bank_rates"."mart"."metal_prices_analytics__dbt_backup" cascade
+[0m14:31:49.867635 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m14:31:49.868767 [debug] [Thread-2 (]: Timing info for model.bank_rates.metal_prices_analytics (execute): 14:31:49.780763 => 14:31:49.868609
+[0m14:31:49.869038 [debug] [Thread-2 (]: On model.bank_rates.metal_prices_analytics: Close
+[0m14:31:49.869633 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '37d612e6-1d2e-4ed6-bcff-d774da0a8729', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff540742530>]}
+[0m14:31:49.870087 [info ] [Thread-2 (]: 4 of 4 OK created sql table model mart.metal_prices_analytics .................. [[32mSELECT 16804[0m in 0.09s]
+[0m14:31:49.870653 [debug] [Thread-2 (]: Finished running node model.bank_rates.metal_prices_analytics
+[0m14:31:49.871898 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.872137 [debug] [MainThread]: On master: BEGIN
+[0m14:31:49.872349 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m14:31:49.878721 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:49.878967 [debug] [MainThread]: On master: COMMIT
+[0m14:31:49.879183 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:49.879393 [debug] [MainThread]: On master: COMMIT
+[0m14:31:49.879733 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:49.879953 [debug] [MainThread]: On master: Close
+[0m14:31:49.880398 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:31:49.880639 [debug] [MainThread]: Connection 'model.bank_rates.fact_metal_prices' was properly closed.
+[0m14:31:49.880839 [debug] [MainThread]: Connection 'model.bank_rates.metal_prices_analytics' was properly closed.
+[0m14:31:49.881090 [info ] [MainThread]: 
+[0m14:31:49.881384 [info ] [MainThread]: Finished running 1 view model, 3 table models in 0 hours 0 minutes and 0.52 seconds (0.52s).
+[0m14:31:49.882199 [debug] [MainThread]: Command end result
+[0m14:31:49.887758 [info ] [MainThread]: 
+[0m14:31:49.888090 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:31:49.888361 [info ] [MainThread]: 
+[0m14:31:49.888702 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m14:31:49.889136 [debug] [MainThread]: Command `dbt run` succeeded at 14:31:49.889049 after 0.66 seconds
+[0m14:31:49.889390 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff542e3d750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff5407bb340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff5407bbe20>]}
+[0m14:31:49.889715 [debug] [MainThread]: Flushing usage events
+[0m14:31:51.793677 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x786886fa9ae0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868859dfb80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868859dfc10>]}
+
+
+============================== 14:31:51.796027 | 2608c9e1-6f05-49c6-b914-66541831fdda ==============================
+[0m14:31:51.796027 [info ] [MainThread]: Running with dbt=1.5.0
+[0m14:31:51.796413 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '.', 'warn_error': 'None', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'log_cache_events': 'False', 'debug': 'False', 'partial_parse': 'True', 'introspect': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'use_colors': 'True', 'fail_fast': 'False', 'no_print': 'None', 'printer_width': '80', 'log_format': 'default', 'log_path': '/usr/app/logs', 'target_path': 'None', 'static_parser': 'True', 'use_experimental_parser': 'False', 'version_check': 'True'}
+[0m14:31:51.876065 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868858fa350>]}
+[0m14:31:51.889316 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868858fa8f0>]}
+[0m14:31:51.897002 [debug] [MainThread]: checksum: 4568eb639a77b8fcb3a1f4a07856f42b1ff63f1376652889143968e1dbdafbda, vars: {}, profile: , target: , version: 1.5.0
+[0m14:31:51.914905 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:31:51.915157 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:31:51.919340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x786884982800>]}
+[0m14:31:51.924166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868849539a0>]}
+[0m14:31:51.924483 [info ] [MainThread]: Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[0m14:31:51.924806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x786884953a30>]}
+[0m14:31:51.925917 [info ] [MainThread]: 
+[0m14:31:51.926440 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m14:31:51.927468 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates_dds'
+[0m14:31:51.933282 [debug] [ThreadPool]: Acquiring new postgres connection 'list_bank_rates_staging'
+[0m14:31:51.936245 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_dds"
+[0m14:31:51.937635 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_staging"
+[0m14:31:51.937916 [debug] [ThreadPool]: On list_bank_rates_dds: BEGIN
+[0m14:31:51.938177 [debug] [ThreadPool]: On list_bank_rates_staging: BEGIN
+[0m14:31:51.938420 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:51.938698 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:31:51.948427 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:51.948734 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:51.948963 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_dds"
+[0m14:31:51.949216 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_staging"
+[0m14:31:51.949484 [debug] [ThreadPool]: On list_bank_rates_dds: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_dds"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dds'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dds'
+  
+[0m14:31:51.949793 [debug] [ThreadPool]: On list_bank_rates_staging: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_staging"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'staging'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'staging'
+  
+[0m14:31:51.952120 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.0 seconds
+[0m14:31:51.952341 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:51.953383 [debug] [ThreadPool]: On list_bank_rates_dds: ROLLBACK
+[0m14:31:51.954284 [debug] [ThreadPool]: On list_bank_rates_staging: ROLLBACK
+[0m14:31:51.954663 [debug] [ThreadPool]: On list_bank_rates_dds: Close
+[0m14:31:51.954862 [debug] [ThreadPool]: On list_bank_rates_staging: Close
+[0m14:31:51.955635 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_bank_rates_dds, now list_bank_rates_mart)
+[0m14:31:51.957630 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_mart"
+[0m14:31:51.958059 [debug] [ThreadPool]: On list_bank_rates_mart: BEGIN
+[0m14:31:51.958269 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:31:51.964151 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:51.964390 [debug] [ThreadPool]: Using postgres connection "list_bank_rates_mart"
+[0m14:31:51.964635 [debug] [ThreadPool]: On list_bank_rates_mart: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "list_bank_rates_mart"} */
+select
+      'bank_rates' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'mart'
+    union all
+    select
+      'bank_rates' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'mart'
+  
+[0m14:31:51.966648 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:51.967448 [debug] [ThreadPool]: On list_bank_rates_mart: ROLLBACK
+[0m14:31:51.967799 [debug] [ThreadPool]: On list_bank_rates_mart: Close
+[0m14:31:51.971180 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:51.971428 [debug] [MainThread]: On master: BEGIN
+[0m14:31:51.971676 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m14:31:51.977398 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:51.977701 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:51.977965 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m14:31:51.981697 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m14:31:51.982530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2608c9e1-6f05-49c6-b914-66541831fdda', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868849768f0>]}
+[0m14:31:51.982870 [debug] [MainThread]: On master: ROLLBACK
+[0m14:31:51.983200 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:51.983416 [debug] [MainThread]: On master: BEGIN
+[0m14:31:51.983871 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:51.984088 [debug] [MainThread]: On master: COMMIT
+[0m14:31:51.984296 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:51.984487 [debug] [MainThread]: On master: COMMIT
+[0m14:31:51.984826 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:51.985045 [debug] [MainThread]: On master: Close
+[0m14:31:51.985547 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m14:31:51.985838 [info ] [MainThread]: 
+[0m14:31:51.989019 [debug] [Thread-1 (]: Began running node test.bank_rates.not_null_key_columns
+[0m14:31:51.989318 [debug] [Thread-2 (]: Began running node test.bank_rates.positive_prices
+[0m14:31:51.989663 [info ] [Thread-1 (]: 1 of 3 START test not_null_key_columns ......................................... [RUN]
+[0m14:31:51.990075 [info ] [Thread-2 (]: 2 of 3 START test positive_prices .............................................. [RUN]
+[0m14:31:51.990618 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_bank_rates_mart, now test.bank_rates.not_null_key_columns)
+[0m14:31:51.991072 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_bank_rates_staging, now test.bank_rates.positive_prices)
+[0m14:31:51.991376 [debug] [Thread-1 (]: Began compiling node test.bank_rates.not_null_key_columns
+[0m14:31:51.991689 [debug] [Thread-2 (]: Began compiling node test.bank_rates.positive_prices
+[0m14:31:51.993744 [debug] [Thread-1 (]: Writing injected SQL for node "test.bank_rates.not_null_key_columns"
+[0m14:31:51.995502 [debug] [Thread-2 (]: Writing injected SQL for node "test.bank_rates.positive_prices"
+[0m14:31:51.996175 [debug] [Thread-1 (]: Timing info for test.bank_rates.not_null_key_columns (compile): 14:31:51.991895 => 14:31:51.995999
+[0m14:31:51.996534 [debug] [Thread-2 (]: Timing info for test.bank_rates.positive_prices (compile): 14:31:51.993982 => 14:31:51.996340
+[0m14:31:51.996806 [debug] [Thread-1 (]: Began executing node test.bank_rates.not_null_key_columns
+[0m14:31:51.997108 [debug] [Thread-2 (]: Began executing node test.bank_rates.positive_prices
+[0m14:31:52.010448 [debug] [Thread-2 (]: Writing runtime sql for node "test.bank_rates.positive_prices"
+[0m14:31:52.011502 [debug] [Thread-1 (]: Writing runtime sql for node "test.bank_rates.not_null_key_columns"
+[0m14:31:52.012095 [debug] [Thread-2 (]: Using postgres connection "test.bank_rates.positive_prices"
+[0m14:31:52.012390 [debug] [Thread-1 (]: Using postgres connection "test.bank_rates.not_null_key_columns"
+[0m14:31:52.012663 [debug] [Thread-2 (]: On test.bank_rates.positive_prices: BEGIN
+[0m14:31:52.012952 [debug] [Thread-1 (]: On test.bank_rates.not_null_key_columns: BEGIN
+[0m14:31:52.013233 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m14:31:52.013560 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:31:52.020773 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:52.021063 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:52.021353 [debug] [Thread-2 (]: Using postgres connection "test.bank_rates.positive_prices"
+[0m14:31:52.021686 [debug] [Thread-1 (]: Using postgres connection "test.bank_rates.not_null_key_columns"
+[0m14:31:52.021981 [debug] [Thread-2 (]: On test.bank_rates.positive_prices: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "test.bank_rates.positive_prices"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      SELECT 
+    trade_date,
+    metal_code,
+    buy_price_rub,
+    sell_price_rub
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+WHERE buy_price_rub <= 0 OR sell_price_rub <= 0
+      
+    ) dbt_internal_test
+[0m14:31:52.022284 [debug] [Thread-1 (]: On test.bank_rates.not_null_key_columns: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "test.bank_rates.not_null_key_columns"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      SELECT 
+    trade_date,
+    metal_code
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+WHERE trade_date IS NULL 
+   OR metal_code IS NULL 
+   OR buy_price_rub IS NULL 
+   OR sell_price_rub IS NULL
+      
+    ) dbt_internal_test
+[0m14:31:52.034214 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:52.036054 [debug] [Thread-1 (]: Timing info for test.bank_rates.not_null_key_columns (execute): 14:31:51.997307 => 14:31:52.035878
+[0m14:31:52.036325 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:52.036613 [debug] [Thread-1 (]: On test.bank_rates.not_null_key_columns: ROLLBACK
+[0m14:31:52.037654 [debug] [Thread-2 (]: Timing info for test.bank_rates.positive_prices (execute): 14:31:52.007582 => 14:31:52.037439
+[0m14:31:52.038010 [debug] [Thread-2 (]: On test.bank_rates.positive_prices: ROLLBACK
+[0m14:31:52.038263 [debug] [Thread-1 (]: On test.bank_rates.not_null_key_columns: Close
+[0m14:31:52.038609 [debug] [Thread-2 (]: On test.bank_rates.positive_prices: Close
+[0m14:31:52.039138 [info ] [Thread-1 (]: 1 of 3 PASS not_null_key_columns ............................................... [[32mPASS[0m in 0.05s]
+[0m14:31:52.039845 [info ] [Thread-2 (]: 2 of 3 PASS positive_prices .................................................... [[32mPASS[0m in 0.05s]
+[0m14:31:52.040399 [debug] [Thread-1 (]: Finished running node test.bank_rates.not_null_key_columns
+[0m14:31:52.040882 [debug] [Thread-2 (]: Finished running node test.bank_rates.positive_prices
+[0m14:31:52.041301 [debug] [Thread-1 (]: Began running node test.bank_rates.unique_trade_date_metal_code
+[0m14:31:52.041860 [info ] [Thread-1 (]: 3 of 3 START test unique_trade_date_metal_code ................................. [RUN]
+[0m14:31:52.042434 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.bank_rates.not_null_key_columns, now test.bank_rates.unique_trade_date_metal_code)
+[0m14:31:52.042745 [debug] [Thread-1 (]: Began compiling node test.bank_rates.unique_trade_date_metal_code
+[0m14:31:52.045012 [debug] [Thread-1 (]: Writing injected SQL for node "test.bank_rates.unique_trade_date_metal_code"
+[0m14:31:52.045717 [debug] [Thread-1 (]: Timing info for test.bank_rates.unique_trade_date_metal_code (compile): 14:31:52.042959 => 14:31:52.045437
+[0m14:31:52.046052 [debug] [Thread-1 (]: Began executing node test.bank_rates.unique_trade_date_metal_code
+[0m14:31:52.048022 [debug] [Thread-1 (]: Writing runtime sql for node "test.bank_rates.unique_trade_date_metal_code"
+[0m14:31:52.048559 [debug] [Thread-1 (]: Using postgres connection "test.bank_rates.unique_trade_date_metal_code"
+[0m14:31:52.048865 [debug] [Thread-1 (]: On test.bank_rates.unique_trade_date_metal_code: BEGIN
+[0m14:31:52.049157 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:31:52.055810 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:52.056178 [debug] [Thread-1 (]: Using postgres connection "test.bank_rates.unique_trade_date_metal_code"
+[0m14:31:52.056546 [debug] [Thread-1 (]: On test.bank_rates.unique_trade_date_metal_code: /* {"app": "dbt", "dbt_version": "1.5.0", "profile_name": "bank_rates", "target_name": "dev", "node_id": "test.bank_rates.unique_trade_date_metal_code"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      SELECT 
+    trade_date,
+    metal_code,
+    COUNT(*) as count
+FROM "bank_rates"."staging"."stg_cbr_precious_metals"
+GROUP BY trade_date, metal_code
+HAVING COUNT(*) > 1
+      
+    ) dbt_internal_test
+[0m14:31:52.073805 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m14:31:52.075148 [debug] [Thread-1 (]: Timing info for test.bank_rates.unique_trade_date_metal_code (execute): 14:31:52.046224 => 14:31:52.074977
+[0m14:31:52.075424 [debug] [Thread-1 (]: On test.bank_rates.unique_trade_date_metal_code: ROLLBACK
+[0m14:31:52.075827 [debug] [Thread-1 (]: On test.bank_rates.unique_trade_date_metal_code: Close
+[0m14:31:52.076441 [info ] [Thread-1 (]: 3 of 3 PASS unique_trade_date_metal_code ....................................... [[32mPASS[0m in 0.03s]
+[0m14:31:52.076949 [debug] [Thread-1 (]: Finished running node test.bank_rates.unique_trade_date_metal_code
+[0m14:31:52.078100 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:52.078349 [debug] [MainThread]: On master: BEGIN
+[0m14:31:52.078596 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m14:31:52.085619 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m14:31:52.085879 [debug] [MainThread]: On master: COMMIT
+[0m14:31:52.086097 [debug] [MainThread]: Using postgres connection "master"
+[0m14:31:52.086306 [debug] [MainThread]: On master: COMMIT
+[0m14:31:52.086630 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m14:31:52.086837 [debug] [MainThread]: On master: Close
+[0m14:31:52.087270 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:31:52.087480 [debug] [MainThread]: Connection 'test.bank_rates.unique_trade_date_metal_code' was properly closed.
+[0m14:31:52.087714 [debug] [MainThread]: Connection 'test.bank_rates.positive_prices' was properly closed.
+[0m14:31:52.087956 [info ] [MainThread]: 
+[0m14:31:52.088242 [info ] [MainThread]: Finished running 3 tests in 0 hours 0 minutes and 0.16 seconds (0.16s).
+[0m14:31:52.088929 [debug] [MainThread]: Command end result
+[0m14:31:52.093417 [info ] [MainThread]: 
+[0m14:31:52.093803 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:31:52.094072 [info ] [MainThread]: 
+[0m14:31:52.094405 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m14:31:52.094831 [debug] [MainThread]: Command `dbt test` succeeded at 14:31:52.094742 after 0.31 seconds
+[0m14:31:52.095093 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x786886fa9ae0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7868858fa8f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x786884953a90>]}
+[0m14:31:52.095371 [debug] [MainThread]: Flushing usage events

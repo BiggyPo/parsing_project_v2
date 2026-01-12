@@ -1,0 +1,49 @@
+[2026-01-12T14:31:47.213+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2026-01-12T14:25:33.319758+00:00 [queued]>
+[2026-01-12T14:31:47.219+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2026-01-12T14:25:33.319758+00:00 [queued]>
+[2026-01-12T14:31:47.219+0000] {taskinstance.py:1361} INFO - Starting attempt 4 of 4
+[2026-01-12T14:31:47.227+0000] {taskinstance.py:1382} INFO - Executing <Task(DockerOperator): run_dbt_all> on 2026-01-12 14:25:33.319758+00:00
+[2026-01-12T14:31:47.233+0000] {standard_task_runner.py:57} INFO - Started process 447 to run task
+[2026-01-12T14:31:47.236+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'cbr_metals_daily_etl_final', 'run_dbt_all', 'manual__2026-01-12T14:25:33.319758+00:00', '--job-id', '147', '--raw', '--subdir', 'DAGS_FOLDER/cbr_metals_daily_etl_final.py', '--cfg-path', '/tmp/tmp4ul31trq']
+[2026-01-12T14:31:47.238+0000] {standard_task_runner.py:85} INFO - Job 147: Subtask run_dbt_all
+[2026-01-12T14:31:47.275+0000] {task_command.py:416} INFO - Running <TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2026-01-12T14:25:33.319758+00:00 [running]> on host 62006edfc906
+[2026-01-12T14:31:47.353+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='biggy' AIRFLOW_CTX_DAG_ID='cbr_metals_daily_etl_final' AIRFLOW_CTX_TASK_ID='run_dbt_all' AIRFLOW_CTX_EXECUTION_DATE='2026-01-12T14:25:33.319758+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-01-12T14:25:33.319758+00:00'
+[2026-01-12T14:31:47.387+0000] {docker.py:343} INFO - Starting docker container from image bank_rates_monitoring-dbt
+[2026-01-12T14:31:49.237+0000] {docker.py:413} INFO - [0m14:31:49  Running with dbt=1.5.0
+[2026-01-12T14:31:49.364+0000] {docker.py:413} INFO - [0m14:31:49  Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[2026-01-12T14:31:49.365+0000] {docker.py:413} INFO - [0m14:31:49
+[2026-01-12T14:31:49.496+0000] {docker.py:413} INFO - [0m14:31:49  Concurrency: 2 threads (target='dev')
+[2026-01-12T14:31:49.496+0000] {docker.py:413} INFO - [0m14:31:49
+[2026-01-12T14:31:49.512+0000] {docker.py:413} INFO - [0m14:31:49  1 of 4 START sql view model staging.stg_cbr_precious_metals .................... [RUN]
+[2026-01-12T14:31:49.645+0000] {docker.py:413} INFO - [0m14:31:49  1 of 4 OK created sql view model staging.stg_cbr_precious_metals ............... [[32mCREATE VIEW[0m in 0.13s]
+[2026-01-12T14:31:49.647+0000] {docker.py:413} INFO - [0m14:31:49  2 of 4 START sql table model dds.dim_metals .................................... [RUN]
+[2026-01-12T14:31:49.648+0000] {docker.py:413} INFO - [0m14:31:49  3 of 4 START sql table model dds.fact_metal_prices ............................. [RUN]
+[2026-01-12T14:31:49.772+0000] {docker.py:413} INFO - [0m14:31:49  2 of 4 OK created sql table model dds.dim_metals ............................... [[32mSELECT 4[0m in 0.12s]
+[2026-01-12T14:31:49.775+0000] {docker.py:413} INFO - [0m14:31:49  3 of 4 OK created sql table model dds.fact_metal_prices ........................ [[32mSELECT 16804[0m in 0.13s]
+[2026-01-12T14:31:49.777+0000] {docker.py:413} INFO - [0m14:31:49  4 of 4 START sql table model mart.metal_prices_analytics ....................... [RUN]
+[2026-01-12T14:31:49.870+0000] {docker.py:413} INFO - [0m14:31:49  4 of 4 OK created sql table model mart.metal_prices_analytics .................. [[32mSELECT 16804[0m in 0.09s]
+[2026-01-12T14:31:49.881+0000] {docker.py:413} INFO - [0m14:31:49
+[2026-01-12T14:31:49.881+0000] {docker.py:413} INFO - [0m14:31:49  Finished running 1 view model, 3 table models in 0 hours 0 minutes and 0.52 seconds (0.52s).
+[2026-01-12T14:31:49.888+0000] {docker.py:413} INFO - [0m14:31:49
+[2026-01-12T14:31:49.888+0000] {docker.py:413} INFO - [0m14:31:49  [32mCompleted successfully[0m
+[2026-01-12T14:31:49.888+0000] {docker.py:413} INFO - [0m14:31:49
+[2026-01-12T14:31:49.888+0000] {docker.py:413} INFO - [0m14:31:49  Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[2026-01-12T14:31:51.796+0000] {docker.py:413} INFO - [0m14:31:51  Running with dbt=1.5.0
+[2026-01-12T14:31:51.925+0000] {docker.py:413} INFO - [0m14:31:51  Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[2026-01-12T14:31:51.926+0000] {docker.py:413} INFO - [0m14:31:51
+[2026-01-12T14:31:51.985+0000] {docker.py:413} INFO - [0m14:31:51  Concurrency: 2 threads (target='dev')
+[2026-01-12T14:31:51.986+0000] {docker.py:413} INFO - [0m14:31:51
+[2026-01-12T14:31:51.989+0000] {docker.py:413} INFO - [0m14:31:51  1 of 3 START test not_null_key_columns ......................................... [RUN]
+[2026-01-12T14:31:51.990+0000] {docker.py:413} INFO - [0m14:31:51  2 of 3 START test positive_prices .............................................. [RUN]
+[2026-01-12T14:31:52.039+0000] {docker.py:413} INFO - [0m14:31:52  1 of 3 PASS not_null_key_columns ............................................... [[32mPASS[0m in 0.05s]
+[2026-01-12T14:31:52.040+0000] {docker.py:413} INFO - [0m14:31:52  2 of 3 PASS positive_prices .................................................... [[32mPASS[0m in 0.05s]
+[2026-01-12T14:31:52.042+0000] {docker.py:413} INFO - [0m14:31:52  3 of 3 START test unique_trade_date_metal_code ................................. [RUN]
+[2026-01-12T14:31:52.076+0000] {docker.py:413} INFO - [0m14:31:52  3 of 3 PASS unique_trade_date_metal_code ....................................... [[32mPASS[0m in 0.03s]
+[2026-01-12T14:31:52.088+0000] {docker.py:413} INFO - [0m14:31:52
+[2026-01-12T14:31:52.088+0000] {docker.py:413} INFO - [0m14:31:52  Finished running 3 tests in 0 hours 0 minutes and 0.16 seconds (0.16s).
+[2026-01-12T14:31:52.093+0000] {docker.py:413} INFO - [0m14:31:52
+[2026-01-12T14:31:52.094+0000] {docker.py:413} INFO - [0m14:31:52  [32mCompleted successfully[0m
+[2026-01-12T14:31:52.094+0000] {docker.py:413} INFO - [0m14:31:52
+[2026-01-12T14:31:52.094+0000] {docker.py:413} INFO - [0m14:31:52  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[2026-01-12T14:31:52.820+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=cbr_metals_daily_etl_final, task_id=run_dbt_all, execution_date=20260112T142533, start_date=20260112T143147, end_date=20260112T143152
+[2026-01-12T14:31:52.894+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-01-12T14:31:52.908+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

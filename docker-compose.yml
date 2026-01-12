@@ -77,7 +77,7 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
       DOCKER_HOST: unix:///var/run/docker.sock
-    user: "1000:0"
+    user: "root:0"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs

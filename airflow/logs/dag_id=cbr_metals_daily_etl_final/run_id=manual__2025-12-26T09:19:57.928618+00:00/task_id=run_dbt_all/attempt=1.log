@@ -1,0 +1,52 @@
+[2025-12-26T09:19:59.635+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2025-12-26T09:19:57.928618+00:00 [queued]>
+[2025-12-26T09:19:59.641+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2025-12-26T09:19:57.928618+00:00 [queued]>
+[2025-12-26T09:19:59.642+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2025-12-26T09:19:59.679+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): run_dbt_all> on 2025-12-26 09:19:57.928618+00:00
+[2025-12-26T09:19:59.684+0000] {standard_task_runner.py:57} INFO - Started process 724 to run task
+[2025-12-26T09:19:59.687+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'cbr_metals_daily_etl_final', 'run_dbt_all', 'manual__2025-12-26T09:19:57.928618+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/cbr_metals_daily_etl_final.py', '--cfg-path', '/tmp/tmp172tufpq']
+[2025-12-26T09:19:59.689+0000] {standard_task_runner.py:85} INFO - Job 111: Subtask run_dbt_all
+[2025-12-26T09:19:59.727+0000] {task_command.py:416} INFO - Running <TaskInstance: cbr_metals_daily_etl_final.run_dbt_all manual__2025-12-26T09:19:57.928618+00:00 [running]> on host 285656f0f4ad
+[2025-12-26T09:19:59.787+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='biggy' AIRFLOW_CTX_DAG_ID='cbr_metals_daily_etl_final' AIRFLOW_CTX_TASK_ID='run_dbt_all' AIRFLOW_CTX_EXECUTION_DATE='2025-12-26T09:19:57.928618+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-26T09:19:57.928618+00:00'
+[2025-12-26T09:19:59.788+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-26T09:19:59.788+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'docker exec -i dbt bash -c "cd /usr/app && dbt run --profiles-dir . && dbt test --profiles-dir ."']
+[2025-12-26T09:19:59.798+0000] {subprocess.py:86} INFO - Output:
+[2025-12-26T09:20:03.759+0000] {subprocess.py:93} INFO - [0m09:20:03  Running with dbt=1.5.0
+[2025-12-26T09:20:04.123+0000] {subprocess.py:93} INFO - [0m09:20:04  Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[2025-12-26T09:20:04.125+0000] {subprocess.py:93} INFO - [0m09:20:04
+[2025-12-26T09:20:04.270+0000] {subprocess.py:93} INFO - [0m09:20:04  Concurrency: 2 threads (target='dev')
+[2025-12-26T09:20:04.271+0000] {subprocess.py:93} INFO - [0m09:20:04
+[2025-12-26T09:20:04.276+0000] {subprocess.py:93} INFO - [0m09:20:04  1 of 4 START sql view model staging.stg_cbr_precious_metals .................... [RUN]
+[2025-12-26T09:20:04.430+0000] {subprocess.py:93} INFO - [0m09:20:04  1 of 4 OK created sql view model staging.stg_cbr_precious_metals ............... [[32mCREATE VIEW[0m in 0.15s]
+[2025-12-26T09:20:04.432+0000] {subprocess.py:93} INFO - [0m09:20:04  2 of 4 START sql table model dds.dim_metals .................................... [RUN]
+[2025-12-26T09:20:04.433+0000] {subprocess.py:93} INFO - [0m09:20:04  3 of 4 START sql table model dds.fact_metal_prices ............................. [RUN]
+[2025-12-26T09:20:04.531+0000] {subprocess.py:93} INFO - [0m09:20:04  2 of 4 OK created sql table model dds.dim_metals ............................... [[32mSELECT 4[0m in 0.10s]
+[2025-12-26T09:20:04.587+0000] {subprocess.py:93} INFO - [0m09:20:04  3 of 4 OK created sql table model dds.fact_metal_prices ........................ [[32mSELECT 16804[0m in 0.15s]
+[2025-12-26T09:20:04.589+0000] {subprocess.py:93} INFO - [0m09:20:04  4 of 4 START sql table model mart.metal_prices_analytics ....................... [RUN]
+[2025-12-26T09:20:04.690+0000] {subprocess.py:93} INFO - [0m09:20:04  4 of 4 OK created sql table model mart.metal_prices_analytics .................. [[32mSELECT 16804[0m in 0.10s]
+[2025-12-26T09:20:04.702+0000] {subprocess.py:93} INFO - [0m09:20:04
+[2025-12-26T09:20:04.703+0000] {subprocess.py:93} INFO - [0m09:20:04  Finished running 1 view model, 3 table models in 0 hours 0 minutes and 0.58 seconds (0.58s).
+[2025-12-26T09:20:04.709+0000] {subprocess.py:93} INFO - [0m09:20:04
+[2025-12-26T09:20:04.710+0000] {subprocess.py:93} INFO - [0m09:20:04  [32mCompleted successfully[0m
+[2025-12-26T09:20:04.710+0000] {subprocess.py:93} INFO - [0m09:20:04
+[2025-12-26T09:20:04.711+0000] {subprocess.py:93} INFO - [0m09:20:04  Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[2025-12-26T09:20:06.653+0000] {subprocess.py:93} INFO - [0m09:20:06  Running with dbt=1.5.0
+[2025-12-26T09:20:06.782+0000] {subprocess.py:93} INFO - [0m09:20:06  Found 4 models, 3 tests, 0 snapshots, 0 analyses, 308 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+[2025-12-26T09:20:06.783+0000] {subprocess.py:93} INFO - [0m09:20:06
+[2025-12-26T09:20:06.843+0000] {subprocess.py:93} INFO - [0m09:20:06  Concurrency: 2 threads (target='dev')
+[2025-12-26T09:20:06.844+0000] {subprocess.py:93} INFO - [0m09:20:06
+[2025-12-26T09:20:06.847+0000] {subprocess.py:93} INFO - [0m09:20:06  1 of 3 START test not_null_key_columns ......................................... [RUN]
+[2025-12-26T09:20:06.848+0000] {subprocess.py:93} INFO - [0m09:20:06  2 of 3 START test positive_prices .............................................. [RUN]
+[2025-12-26T09:20:06.901+0000] {subprocess.py:93} INFO - [0m09:20:06  1 of 3 PASS not_null_key_columns ............................................... [[32mPASS[0m in 0.05s]
+[2025-12-26T09:20:06.901+0000] {subprocess.py:93} INFO - [0m09:20:06  2 of 3 PASS positive_prices .................................................... [[32mPASS[0m in 0.05s]
+[2025-12-26T09:20:06.903+0000] {subprocess.py:93} INFO - [0m09:20:06  3 of 3 START test unique_trade_date_metal_code ................................. [RUN]
+[2025-12-26T09:20:06.935+0000] {subprocess.py:93} INFO - [0m09:20:06  3 of 3 PASS unique_trade_date_metal_code ....................................... [[32mPASS[0m in 0.03s]
+[2025-12-26T09:20:06.945+0000] {subprocess.py:93} INFO - [0m09:20:06
+[2025-12-26T09:20:06.945+0000] {subprocess.py:93} INFO - [0m09:20:06  Finished running 3 tests in 0 hours 0 minutes and 0.16 seconds (0.16s).
+[2025-12-26T09:20:06.951+0000] {subprocess.py:93} INFO - [0m09:20:06
+[2025-12-26T09:20:06.951+0000] {subprocess.py:93} INFO - [0m09:20:06  [32mCompleted successfully[0m
+[2025-12-26T09:20:06.951+0000] {subprocess.py:93} INFO - [0m09:20:06
+[2025-12-26T09:20:06.952+0000] {subprocess.py:93} INFO - [0m09:20:06  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[2025-12-26T09:20:07.562+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-12-26T09:20:07.589+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=cbr_metals_daily_etl_final, task_id=run_dbt_all, execution_date=20251226T091957, start_date=20251226T091959, end_date=20251226T092007
+[2025-12-26T09:20:07.632+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-12-26T09:20:07.647+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

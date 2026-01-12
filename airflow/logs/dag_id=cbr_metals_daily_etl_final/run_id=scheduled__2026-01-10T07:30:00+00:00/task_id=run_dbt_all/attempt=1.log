@@ -1,0 +1,23 @@
+[2026-01-12T06:14:41.046+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all scheduled__2026-01-10T07:30:00+00:00 [queued]>
+[2026-01-12T06:14:41.054+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cbr_metals_daily_etl_final.run_dbt_all scheduled__2026-01-10T07:30:00+00:00 [queued]>
+[2026-01-12T06:14:41.054+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2026-01-12T06:14:41.074+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): run_dbt_all> on 2026-01-10 07:30:00+00:00
+[2026-01-12T06:14:41.078+0000] {standard_task_runner.py:57} INFO - Started process 193 to run task
+[2026-01-12T06:14:41.081+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'cbr_metals_daily_etl_final', 'run_dbt_all', 'scheduled__2026-01-10T07:30:00+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/cbr_metals_daily_etl_final.py', '--cfg-path', '/tmp/tmpc722crlr']
+[2026-01-12T06:14:41.083+0000] {standard_task_runner.py:85} INFO - Job 114: Subtask run_dbt_all
+[2026-01-12T06:14:41.141+0000] {task_command.py:416} INFO - Running <TaskInstance: cbr_metals_daily_etl_final.run_dbt_all scheduled__2026-01-10T07:30:00+00:00 [running]> on host 285656f0f4ad
+[2026-01-12T06:14:41.313+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='biggy' AIRFLOW_CTX_DAG_ID='cbr_metals_daily_etl_final' AIRFLOW_CTX_TASK_ID='run_dbt_all' AIRFLOW_CTX_EXECUTION_DATE='2026-01-10T07:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-10T07:30:00+00:00'
+[2026-01-12T06:14:41.314+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-01-12T06:14:41.315+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'docker exec -i dbt bash -c "cd /usr/app && dbt run --profiles-dir . && dbt test --profiles-dir ."']
+[2026-01-12T06:14:41.323+0000] {subprocess.py:86} INFO - Output:
+[2026-01-12T06:14:45.043+0000] {subprocess.py:93} INFO - permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+[2026-01-12T06:14:45.046+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-01-12T06:14:45.067+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 210, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-01-12T06:14:45.078+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=cbr_metals_daily_etl_final, task_id=run_dbt_all, execution_date=20260110T073000, start_date=20260112T061441, end_date=20260112T061445
+[2026-01-12T06:14:45.147+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 114 for task run_dbt_all (Bash command failed. The command returned a non-zero exit code 1.; 193)
+[2026-01-12T06:14:45.184+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2026-01-12T06:14:45.204+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

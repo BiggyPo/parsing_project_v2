@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.empty import EmptyOperator
+from airflow.providers.docker.operators.docker import DockerOperator
 
 default_args = {
     'owner': 'biggy',
@@ -24,13 +25,42 @@ with DAG(
     
     start = EmptyOperator(task_id='start')
     
-    # ИСПРАВЛЕННАЯ задача: правильный параметр bash_command вместо command
-    run_dbt_all = BashOperator(
-        task_id='run_dbt_all',
-        # Команда выполняется через docker exec внутри контейнера Airflow
-        bash_command='docker exec -i dbt bash -c "cd /usr/app && dbt run --profiles-dir . && dbt test --profiles-dir ."',
-    )
-    
+    # ЗАДАЧА run_dbt_all: DockerOperator для запуска dbt
+    run_dbt_all = DockerOperator(
+    task_id='run_dbt_all',
+    image='bank_rates_monitoring-dbt',
+    container_name='dbt_task_{{ ds_nodash }}',
+    api_version='auto',
+    auto_remove=True,
+    command='bash -c "cd /usr/app && dbt run --profiles-dir . && dbt test --profiles-dir ."',
+    docker_url='unix://var/run/docker.sock',
+    # Ключевое изменение 1: Используем сеть, в которой находится контейнер Airflow
+    network_mode='container:airflow_scheduler',
+    # Ключевое изменение 2: Явно отключаем проблемное временное монтирование
+    mount_tmp_dir=False,
+    # Ключевое изменение 3: Передаем переменные окружения для подключения к БД
+    environment={
+        # Эти переменные ДОЛЖНЫ совпадать с настройками в вашем dbt/profiles.yml
+        'DBT_HOST': 'postgres',  # Имя контейнера с БД
+        'DBT_USER': 'your_dbt_user',  # Замените на реальное имя пользователя БД для dbt
+        'DBT_PASSWORD': 'your_dbt_password',  # Замените на реальный пароль
+        'DBT_PORT': 5432,
+        'DBT_DATABASE': 'your_dbt_database'  # Замените на имя БД
+    },
+    mounts=[
+        {
+            # Убедитесь, что этот путь В ТОЧНОСТИ совпадает с путем в вашем docker-compose для сервиса dbt
+            'Source': '/home/biggypo/bank_rates_monitoring/dbt',
+            'Target': '/usr/app',
+            'Type': 'bind',
+            'ReadOnly': False
+        }
+    ],
+    user='root',
+    dag=dag,
+)
+
     end = EmptyOperator(task_id='end')
     
+    # Определение последовательности задач
     start >> run_dbt_all >> end

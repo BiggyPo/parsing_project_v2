@@ -20,6 +20,16 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# СОЗДАЕМ ГРУППУ docker С GID 988 И ДОБАВЛЯЕМ ПОЛЬЗОВАТЕЛЯ airflow
+# Проверяем, существует ли группа с GID 988, если нет - создаем
+RUN if ! getent group 988 > /dev/null; then \
+        groupadd -g 988 docker; \
+    else \
+        group_name=$(getent group 988 | cut -d: -f1); \
+        groupmod -n docker $group_name || true; \
+    fi && \
+    usermod -aG docker airflow
+
 USER airflow
 
 # Установка Python зависимостей для Airflow
